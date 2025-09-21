@@ -36,7 +36,7 @@ const Sidebar = ({ currentPage, onNavigate, disabled }) => {
         <p className="demo-note">Demo Version</p>
       </div>
       
-      <style jsx>{`
+      <style>{`
         .sidebar {
           position: fixed;
           left: 0;

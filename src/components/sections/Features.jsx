@@ -51,7 +51,7 @@ const Features = () => {
           ))}
         </div>
       </div>
-      <style jsx>{`
+      <style>{`
         .features {
           padding: 80px 0;
           background: var(--white);

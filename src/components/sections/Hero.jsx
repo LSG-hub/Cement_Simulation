@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Hero = () => {
+const Hero = ({ onGetStarted }) => {
   return (
     <section className="hero">
       <div className="container">
@@ -26,12 +26,12 @@ const Hero = () => {
             </div>
           </div>
           <div className="hero-cta">
-            <button className="btn-primary">Get Started</button>
-            <button className="btn-secondary">Watch Demo</button>
+            <button className="btn-primary" onClick={onGetStarted}>Get Started</button>
+            <button className="btn-secondary" onClick={onGetStarted}>Watch Demo</button>
           </div>
         </div>
       </div>
-      <style jsx>{`
+      <style>{`
         .hero {
           padding: 120px 0 80px;
           background: linear-gradient(135deg, 

@@ -35,7 +35,7 @@ const GaugeChart = ({ value, min, max, optimal, danger, label, unit }) => {
         </div>
       </div>
       
-      <style jsx>{`
+      <style>{`
         .gauge-container {
           display: flex;
           flex-direction: column;

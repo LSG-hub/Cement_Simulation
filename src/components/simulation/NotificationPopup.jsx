@@ -47,7 +47,7 @@ const NotificationPopup = ({ onClose }) => {
         </div>
       </div>
       
-      <style jsx>{`
+      <style>{`
         .notification-overlay {
           position: fixed;
           top: 0;

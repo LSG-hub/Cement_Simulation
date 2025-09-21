@@ -139,7 +139,7 @@ const VisionDisplay = () => {
         </button>
       </div>
       
-      <style jsx>{`
+      <style>{`
         .vision-display {
           padding: 20px;
         }

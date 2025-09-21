@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Header = () => {
+const Header = ({ onGetStarted }) => {
   return (
     <header className="header">
       <div className="container">
@@ -14,11 +14,11 @@ const Header = () => {
             <a href="#features">Features</a>
             <a href="#solutions">Solutions</a>
             <a href="#contact">Contact</a>
-            <button className="btn-primary">Get Started</button>
+            <button className="btn-primary" onClick={onGetStarted}>Get Started</button>
           </nav>
         </div>
       </div>
-      <style jsx>{`
+      <style>{`
         .header {
           background: var(--white);
           box-shadow: 0 2px 10px rgba(0,0,0,0.1);

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CTA = () => {
+const CTA = ({ onGetStarted }) => {
   return (
     <section className="cta">
       <div className="container">
@@ -12,8 +12,8 @@ const CTA = () => {
             efficiency and sustainability.
           </p>
           <div className="cta-buttons">
-            <button className="btn-primary">Get Started Now</button>
-            <button className="btn-outline">Schedule Demo</button>
+            <button className="btn-primary" onClick={onGetStarted}>Get Started Now</button>
+            <button className="btn-outline" onClick={onGetStarted}>Schedule Demo</button>
           </div>
           <div className="tech-stack">
             <span>Powered by:</span>
@@ -26,7 +26,7 @@ const CTA = () => {
           </div>
         </div>
       </div>
-      <style jsx>{`
+      <style>{`
         .cta {
           padding: 80px 0;
           background: linear-gradient(135deg, 

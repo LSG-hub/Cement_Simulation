@@ -86,7 +86,7 @@ const AgentChat = () => {
         </div>
       </div>
       
-      <style jsx>{`
+      <style>{`
         .agent-chat {
           background: var(--white);
           border-radius: 10px;

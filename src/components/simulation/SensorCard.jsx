@@ -33,7 +33,7 @@ const SensorCard = ({ unit, data, phase }) => {
         })}
       </div>
       
-      <style jsx>{`
+      <style>{`
         .sensor-card {
           background: var(--white);
           border-radius: 10px;

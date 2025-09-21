@@ -54,7 +54,7 @@ const Solutions = () => {
           </div>
         </div>
       </div>
-      <style jsx>{`
+      <style>{`
         .solutions {
           padding: 80px 0;
           background: linear-gradient(180deg, 

@@ -89,7 +89,7 @@ const Dashboard = ({ phase }) => {
         </div>
       )}
       
-      <style jsx>{`
+      <style>{`
         .dashboard {
           padding: 20px;
         }

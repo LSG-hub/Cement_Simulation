@@ -157,7 +157,7 @@ const AIChatInterface = () => {
         </div>
       </div>
       
-      <style jsx>{`
+      <style>{`
         .ai-chat-interface {
           display: grid;
           grid-template-columns: 2fr 1fr;

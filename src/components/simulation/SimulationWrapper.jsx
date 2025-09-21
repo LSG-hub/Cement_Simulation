@@ -101,7 +101,7 @@ const SimulationWrapper = ({ onExit }) => {
         </>
       )}
       
-      <style jsx>{`
+      <style>{`
         .simulation-wrapper {
           position: fixed;
           top: 0;

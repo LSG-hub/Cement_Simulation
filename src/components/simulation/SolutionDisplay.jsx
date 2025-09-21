@@ -111,7 +111,7 @@ const SolutionDisplay = () => {
         </>
       )}
       
-      <style jsx>{`
+      <style>{`
         .solution-display {
           padding: 20px;
         }

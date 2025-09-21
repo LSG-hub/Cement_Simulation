@@ -37,7 +37,7 @@ const Footer = () => {
           <p>&copy; 2024 JK Cement Ltd. All rights reserved. | Hackathon Demo</p>
         </div>
       </div>
-      <style jsx>{`
+      <style>{`
         .footer {
           background: var(--text-dark);
           color: var(--white);
