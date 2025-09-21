@@ -1,9 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { agentConversations } from '../../utils/simulationData';
 
 const AgentChat = () => {
   const [messages, setMessages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const messagesEndRef = useRef(null);
+  
+  // Auto-scroll to bottom when new messages appear
+  const scrollToBottom = () => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+  
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   useEffect(() => {
     if (currentIndex < agentConversations.length) {
@@ -62,6 +74,7 @@ const AgentChat = () => {
               <span></span>
             </div>
           )}
+          <div ref={messagesEndRef} />
         </div>
       </div>
       

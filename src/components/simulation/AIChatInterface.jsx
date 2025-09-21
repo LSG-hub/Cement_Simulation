@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const AIChatInterface = () => {
   const [selectedAgent, setSelectedAgent] = useState('kiln');
@@ -7,6 +7,17 @@ const AIChatInterface = () => {
   ]);
   const [inputText, setInputText] = useState('');
   const [isSimulating, setIsSimulating] = useState(true);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const messagesEndRef = useRef(null);
+  
+  // Auto-scroll to bottom when new messages appear
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   const agents = {
     preCal: { name: 'Pre-Calciner Agent', icon: '🔥' },
@@ -60,7 +71,11 @@ const AIChatInterface = () => {
         
         index++;
       } else {
-        setIsSimulating(false);
+        // Wait for last message to be visible before ending
+        setTimeout(() => {
+          setIsSimulating(false);
+          setIsAutoPlaying(false);
+        }, 2000);
         clearInterval(interval);
       }
     }, 4000);
@@ -74,7 +89,20 @@ const AIChatInterface = () => {
     const newMessage = { role: 'user', content: inputText };
     setMessages(prev => [...prev, newMessage]);
 
-    // Intelligent response based on keywords
+    // After simulation, show "no real data" message
+    if (!isSimulating) {
+      setTimeout(() => {
+        setMessages(prev => [...prev, {
+          role: 'agent',
+          content: `I understand your query regarding "${inputText}". However, this is currently a demonstration environment without connection to real-time plant data. To provide accurate analytics and insights, please connect to the actual plant data systems including sensors, SCADA, and process control databases. Once connected, I'll be able to provide real-time analysis, predictions, and optimization recommendations based on live operational data.`,
+          showChart: false
+        }]);
+      }, 800);
+      setInputText('');
+      return;
+    }
+
+    // During simulation - intelligent response based on keywords
     const response = generateResponse(inputText.toLowerCase(), selectedAgent);
     
     setTimeout(() => {
@@ -349,6 +377,10 @@ const AIChatInterface = () => {
         content: `Hello! I am the ${agents[agent].name}. How can I help you today?` 
       }
     ]);
+    // Reset simulation state when changing agents after initial simulation
+    if (!isAutoPlaying && isSimulating) {
+      setIsSimulating(false);
+    }
   };
 
   return (
@@ -380,6 +412,7 @@ const AIChatInterface = () => {
                 </div>
               </div>
             ))}
+            <div ref={messagesEndRef} />
           </div>
 
           <div className="input-area">
@@ -389,9 +422,9 @@ const AIChatInterface = () => {
               onChange={(e) => setInputText(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && handleSend()}
               placeholder="Ask about temperatures, efficiency, quality, trends..."
-              disabled={isSimulating}
+              disabled={isAutoPlaying}
             />
-            <button onClick={handleSend} className="send-btn" disabled={isSimulating}>
+            <button onClick={handleSend} className="send-btn" disabled={isAutoPlaying}>
               Send
             </button>
           </div>

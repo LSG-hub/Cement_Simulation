@@ -29,15 +29,15 @@ const SimulationWrapper = ({ onExit }) => {
     
     // Navigate to agent chat
     setCurrentPage('agentChat');
-    await delay(8000);
+    await delay(20000);
     
     // Navigate to solutions
     setCurrentPage('solutions');
-    await delay(6000);
+    await delay(10000);
     
     // Navigate to AI chat interface
     setCurrentPage('aiChat');
-    await delay(5000);
+    await delay(20000);  // Increased time for complete AI chat simulation
     
     // Show vision
     setCurrentPage('vision');
@@ -60,7 +60,7 @@ const SimulationWrapper = ({ onExit }) => {
       case 'solutions':
         return <SolutionDisplay />;
       case 'aiChat':
-        return <AIChatInterface />;
+        return <AIChatInterface isInSequence={isSequenceMode} />;
       case 'vision':
         return <VisionDisplay />;
       default:
